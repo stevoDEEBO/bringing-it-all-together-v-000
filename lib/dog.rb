@@ -23,7 +23,7 @@ class Dog
     DB[:conn].execute(sql)
   end
 
-  def Dog::drop_table
+  def self.drop_table
     sql = "DROP TABLE IF EXISTS dogs"
     DB[:conn].execute(sql)
   end
@@ -55,7 +55,7 @@ class Dog
     Dog.new(result[0], result[1], result[2])
   end
 
-  
+
   def Dog::new_from_db(row)
     # create a new dog object given a row from the database
     dog = self.new(row[0], row[1], row[2])
