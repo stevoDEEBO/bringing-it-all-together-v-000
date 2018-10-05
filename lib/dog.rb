@@ -11,7 +11,7 @@ class Dog
     @id, @name, @breed = id, name, breed
   end
 
-  def Dog::create_table
+  def self.create_table
     sql = <<-SQL
     CREATE TABLE IF NOT EXISTS dogs (
       id INTEGER PRIMARY KEY,
@@ -56,13 +56,13 @@ class Dog
   end
 
 
-  def Dog::new_from_db(row)
+  def self.new_from_db(row)
     # create a new dog object given a row from the database
     dog = self.new(row[0], row[1], row[2])
     dog
   end
 
-  def Dog::find_by_name(name)
+  def self.find_by_name(name)
     # find the dog in the database given a name
     # return a new instance of the dog class
     sql = <<-SQL
