@@ -11,7 +11,7 @@ class Dog
     @id, @name, @breed = id, name, breed
   end
 
-  def self.create_table
+  def Dog::create_table
     sql = <<-SQL
     CREATE TABLE IF NOT EXISTS dogs (
       id INTEGER PRIMARY KEY,
@@ -23,7 +23,7 @@ class Dog
     DB[:conn].execute(sql)
   end
 
-  def self.drop_table
+  def Dog::drop_table
     sql = "DROP TABLE IF EXISTS dogs"
     DB[:conn].execute(sql)
   end
@@ -55,13 +55,13 @@ class Dog
     Dog.new(result[0], result[1], result[2])
   end
 
-  def self.new_from_db(row)
+  def Dog::new_from_db(row)
     # create a new dog object given a row from the database
     dog = self.new(row[0], row[1], row[2])
     dog
   end
 
-  def self.find_by_name(name)
+  def Dog::find_by_name(name)
     # find the dog in the database given a name
     # return a new instance of the dog class
     sql = <<-SQL
