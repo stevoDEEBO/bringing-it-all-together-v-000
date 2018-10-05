@@ -53,6 +53,7 @@ class Dog
     sql = "SELECT * FROM dogs WHERE id = ?"
     result = DB[:conn].execute(sql, id)[0]
     dog = Dog.new(result[0], result[1], result[2])
+    dag.save
     dog
   end
 
